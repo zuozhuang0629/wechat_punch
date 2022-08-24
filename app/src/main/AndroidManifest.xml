@@ -9,6 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Wechat_punch">
+
+        <service
+            android:label="@string/app_name"
+            android:name=".AccessibilityWechatPunchService"
+            android:exported="true"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:process=":BackgroundService">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <!--       通过xml文件完成辅助功能相关配置，也可以在onServiceConnected中动态配置-->
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_config" />
+
+
+        </service>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
